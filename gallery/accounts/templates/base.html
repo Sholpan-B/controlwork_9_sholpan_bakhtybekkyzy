@@ -1,0 +1,77 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>{% block title %} Gallery {% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+<div class="container">
+    <header style="height: 65px; width: 1600px;" class="bg-white position-fixed border-bottom">
+        <nav class="navbar position-fixed container bg-white">
+            <div class="container d-flex justify-content-between" style="width: 980px; height: 45px;">
+                <div>
+                    <ul class="menu mb-0">
+                        <li class="list-unstyled">
+                            <a class="text-dark" href="{% url 'index' %}">На главную</a>
+                        </li>
+                    </ul>
+                </div>
+
+                {% if user.is_authenticated %}
+                    <div class="d-flex">
+                        <div>
+                            <li class="list-unstyled pe-3">
+                                <a href="{% url 'photo_create' %}">Добавить фото</a>
+                            </li>
+                        </div>
+                        <div>
+                            <li class="list-unstyled pe-3">
+                                <a href="{% url 'profile' user.pk %}">
+                                    профиль
+                                </a>
+                            </li>
+                        </div>
+                        <div>
+                            <li class="list-unstyled pe-2">
+                                <a href="{% url 'logout' %}">
+                                    выход
+                                </a>
+                            </li>
+                        </div>
+
+                        {% else %}
+                        <div class="d-flex">
+                            <li class="list-unstyled"><a href="{% url 'login' %}" class="btn btn-primary">Войти</a></li>
+                            <li class="list-unstyled">
+                                <a href="{% url 'register' %}" class="btn btn-white ms-2 text-primary">
+                                    Зарегистрироваться
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="padding-top: 110px;">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer style="height: 120px; font-size: 12px;" class="text-secondary text-center border-top">
+        <div class="container">
+        </div>
+    </footer>
+</div>
+{% block js %}
+{% endblock %}
+</body>
+</html>
