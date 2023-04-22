@@ -1,0 +1,26 @@
+{% load django_bootstrap5 %}
+<div class="text-center">
+    <h2>Галерея фотографий</h2>
+</div>
+<div class="d-flex flex-row flex-wrap" style="padding-left: 145px;">
+        {% for photo in photos %}
+            <div class="border p-0 m-3" style="width: 293px;">
+                <div>
+                    <a href="{% url 'photo_detail' photo.pk %}">
+                        <img src="{{ photo.picture.url }}" width="293"
+                             height="210" alt="user picture">
+                    </a>
+                </div>
+                <div>
+                    Автор: {{ photo.author.username }}
+                </div>
+                <div>
+                    Описание: {{ photo.description }}
+                </div>
+                <div>
+                    Опубликовано: {{ photo.created_at }}
+                </div>
+            </div>
+        {% empty %}
+        {% endfor %}
+    </div>

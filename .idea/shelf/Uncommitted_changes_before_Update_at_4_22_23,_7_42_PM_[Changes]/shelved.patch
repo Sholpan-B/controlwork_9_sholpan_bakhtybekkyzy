@@ -1,0 +1,17 @@
+Index: gallery/api/favorites.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gallery/api/favorites.js b/gallery/api/favorites.js
+new file mode 100644
+--- /dev/null	(date 1682169485674)
++++ b/gallery/api/favorites.js	(date 1682169485674)
+@@ -0,0 +1,6 @@
++window.addEventListener('load', function (){
++    let js_div = document.getElementById('js');
++    let a = document.createElement('button');
++    a.setAttribute('id', 'answerBlock')
++    a.innerText = 'ffffff';
++})
+\ No newline at end of file

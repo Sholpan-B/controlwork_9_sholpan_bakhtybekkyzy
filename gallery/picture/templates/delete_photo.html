@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Photo confirm delete{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить фотографию?</h1>
+
+    <p>Text: {{ photo.author }}</p>
+        <form action="{% url 'photo_delete' photo.pk %}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Удалить"></p>
+            <p><a href="{% url 'index' %}">Отмена</a></p>
+        </form>
+    </div>
+{% endblock %}
